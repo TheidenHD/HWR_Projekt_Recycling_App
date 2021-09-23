@@ -16,19 +16,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         final Button button_scanner = findViewById(R.id.button);
-        button_scanner.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Scanner einbinden
-            }
+        button_scanner.setOnClickListener(v -> {
+            // Scanner einbinden
         });
 
 
         final Button button = findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // FRAGEBOGEN ERSTELLEN
-                startActivity(new Intent(MainActivity.this, Fragebogen.class));
-            }
+        button.setOnClickListener(v -> {
+            // FRAGEBOGEN ERSTELLEN
+            startActivity(new Intent(MainActivity.this, Fragebogen.class));
         });
     }
 }
