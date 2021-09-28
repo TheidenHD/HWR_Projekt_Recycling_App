@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,10 +49,20 @@ public class Fragebogen extends AppCompatActivity {
         } else {
             setTitle("Trennhinweis:");
             TextView show = new TextView(this);
-            show.setText("Gelbe Tonne, Becher vom Deckel trennen.");
+            show.setText("Gelbe Tonne");
             show.setGravity(Gravity.CENTER);
+            show.setTextAppearance(this, android.R.style.TextAppearance_Material_Display2);
             layout.addView(show);
+
+            TextView show2 = new TextView(this);
+            show2.setText("Bitte vorher Becher vom Deckel trennen!");
+            show2.setGravity(Gravity.CENTER);
+            show2.setTextAppearance(this, android.R.style.TextAppearance_Material_Display1);
+            layout.addView(show2);
+
+            ImageView tonne = new ImageView(this);
+            tonne.setImageResource(R.drawable.gelbetonne);
+            layout.addView(tonne);
         }
     }
-
 }
