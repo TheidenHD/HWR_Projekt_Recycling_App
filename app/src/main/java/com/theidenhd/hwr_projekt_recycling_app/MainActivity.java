@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         final Button button_scanner = findViewById(R.id.button);
         button_scanner.setOnClickListener(v -> {
             // Scanner einbinden
+            startActivity(new Intent(MainActivity.this, Scanner.class));
         });
 
 
