@@ -3,16 +3,11 @@ package com.theidenhd.hwr_projekt_recycling_app;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Size;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.mlkit.vision.barcode.Barcode;
@@ -59,21 +54,16 @@ public class Scanner extends AppCompatActivity {
 
         imageAnalyser = new MyImageAnalyzer(getSupportFragmentManager());
 
-        cameraProviderFuture.addListener(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if(ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != (PackageManager.PERMISSION_GRANTED)){
-                        ActivityCompat.requestPermissions(Scanner.this, new String[] {Manifest.permission.CAMERA}, 101);
-                    }else{
-                        ProcessCameraProvider processCameraProvider = (ProcessCameraProvider)cameraProviderFuture.get();
-                        bindpreview(processCameraProvider);
-                    }
-                }catch (ExecutionException e){
-                    e.printStackTrace();
-                }catch (InterruptedException e){
-                    e.printStackTrace();
+        cameraProviderFuture.addListener(() -> {
+            try {
+                if(ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != (PackageManager.PERMISSION_GRANTED)){
+                    ActivityCompat.requestPermissions(Scanner.this, new String[] {Manifest.permission.CAMERA}, 101);
+                }else{
+                    ProcessCameraProvider processCameraProvider = (ProcessCameraProvider)cameraProviderFuture.get();
+                    bindpreview(processCameraProvider);
                 }
+            }catch (ExecutionException | InterruptedException e){
+                e.printStackTrace();
             }
         }, ContextCompat.getMainExecutor(this));
     }
@@ -85,11 +75,10 @@ public class Scanner extends AppCompatActivity {
             ProcessCameraProvider processCameraProvider = null;
             try {
                 processCameraProvider = (ProcessCameraProvider) cameraProviderFuture.get();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
+            } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             }
+            assert processCameraProvider != null;
             bindpreview(processCameraProvider);
         }
     }
@@ -130,42 +119,25 @@ public class Scanner extends AppCompatActivity {
                                 .build();
                 BarcodeScanner scanner = BarcodeScanning.getClient(options);
                 Task<List<Barcode>> result = scanner.process(image)
-                        .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
-                            @Override
-                            public void onSuccess(List<Barcode> barcodes) {
-                                for (Barcode barcode: barcodes) {
-                                    Rect bounds = barcode.getBoundingBox();
-                                    Point[] corners = barcode.getCornerPoints();
+                        .addOnSuccessListener(barcodes -> {
+                            for (Barcode barcode: barcodes) {
 
-                                    String rawValue = barcode.getRawValue();
-
-                                    int valueType = barcode.getValueType();
-                                    // See API reference for complete list of supported types
-                                    switch (valueType) {
-                                        case Barcode.TYPE_PRODUCT:
-                                            String code = barcode.getDisplayValue();
-                                            Toast.makeText(Scanner.this,
-                                                    code,
-                                                    Toast.LENGTH_SHORT)
-                                                    .show();
-                                            break;
-                                    }
+                                int valueType = barcode.getValueType();
+                                // See API reference for complete list of supported types
+                                if (valueType == Barcode.TYPE_PRODUCT) {
+                                    String code = barcode.getDisplayValue();
+                                    Toast.makeText(Scanner.this,
+                                            code,
+                                            Toast.LENGTH_SHORT)
+                                            .show();
                                 }
                             }
                         })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                // Task failed with an exception
-                                // ...
-                            }
+                        .addOnFailureListener(e -> {
+                            // Task failed with an exception
+                            // ...
                         })
-                        .addOnCompleteListener(new OnCompleteListener<List<Barcode>>() {
-                            @Override
-                            public void onComplete(@NonNull Task<List<Barcode>> task) {
-                                imageProxy.close();
-                            }
-                        });
+                        .addOnCompleteListener(task -> imageProxy.close());
             }
         }
     }
