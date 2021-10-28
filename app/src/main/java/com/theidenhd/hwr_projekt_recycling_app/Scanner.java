@@ -6,9 +6,7 @@ import android.content.pm.PackageManager;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Size;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.Task;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.mlkit.vision.barcode.Barcode;
 import com.google.mlkit.vision.barcode.BarcodeScanner;
@@ -16,7 +14,6 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions;
 import com.google.mlkit.vision.barcode.BarcodeScanning;
 import com.google.mlkit.vision.common.InputImage;
 
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -36,7 +33,7 @@ import androidx.fragment.app.FragmentManager;
 
 public class Scanner extends AppCompatActivity {
 
-    private ListenableFuture cameraProviderFuture;
+    private ListenableFuture<?> cameraProviderFuture;
     private ExecutorService cameraExecutor;
     private PreviewView previewView;
     private MyImageAnalyzer imageAnalyser;
@@ -47,7 +44,7 @@ public class Scanner extends AppCompatActivity {
         setContentView(R.layout.activity_scanner);
 
         previewView = findViewById(R.id.previewview);
-        this.getWindow().setFlags(1024,1024);
+        this.getWindow().setFlags(1024, 1024);
 
         cameraExecutor = Executors.newSingleThreadExecutor();
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
@@ -56,13 +53,13 @@ public class Scanner extends AppCompatActivity {
 
         cameraProviderFuture.addListener(() -> {
             try {
-                if(ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != (PackageManager.PERMISSION_GRANTED)){
-                    ActivityCompat.requestPermissions(Scanner.this, new String[] {Manifest.permission.CAMERA}, 101);
-                }else{
-                    ProcessCameraProvider processCameraProvider = (ProcessCameraProvider)cameraProviderFuture.get();
+                if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != (PackageManager.PERMISSION_GRANTED)) {
+                    ActivityCompat.requestPermissions(Scanner.this, new String[]{Manifest.permission.CAMERA}, 101);
+                } else {
+                    ProcessCameraProvider processCameraProvider = (ProcessCameraProvider) cameraProviderFuture.get();
                     bindpreview(processCameraProvider);
                 }
-            }catch (ExecutionException | InterruptedException e){
+            } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             }
         }, ContextCompat.getMainExecutor(this));
@@ -83,30 +80,32 @@ public class Scanner extends AppCompatActivity {
         }
     }
 
-    private void bindpreview(ProcessCameraProvider processCameraProvider) {
+    private void bindpreview(@NonNull ProcessCameraProvider processCameraProvider) {
 
         Preview preview = new Preview.Builder().build();
         CameraSelector cameraSelector = new CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build();
         preview.setSurfaceProvider(previewView.getSurfaceProvider());
         ImageCapture imageCapture = new ImageCapture.Builder().build();
         ImageAnalysis imageAnalysis = new ImageAnalysis.Builder()
-                .setTargetResolution(new Size(1280,720))
+                .setTargetResolution(new Size(1280, 720))
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build();
-        imageAnalysis.setAnalyzer(cameraExecutor,imageAnalyser);
+        imageAnalysis.setAnalyzer(cameraExecutor, imageAnalyser);
         processCameraProvider.unbindAll();
-        processCameraProvider.bindToLifecycle(this,cameraSelector,preview,imageCapture,imageAnalysis);
+        processCameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalysis);
     }
 
-    public class MyImageAnalyzer implements ImageAnalysis.Analyzer{
-        private FragmentManager fragmentManager;
+    public static class MyImageAnalyzer implements ImageAnalysis.Analyzer {
+        private final FragmentManager fragmentManager;
+        private final bottom bd;
 
         public MyImageAnalyzer(FragmentManager fragmentManager) {
             this.fragmentManager = fragmentManager;
+            bd = new bottom();
         }
 
         @Override
-        public void analyze(ImageProxy imageProxy) {
+        public void analyze(@NonNull ImageProxy imageProxy) {
             @SuppressLint("UnsafeOptInUsageError") Image mediaImage = imageProxy.getImage();
             if (mediaImage != null) {
                 InputImage image =
@@ -118,18 +117,16 @@ public class Scanner extends AppCompatActivity {
                                         Barcode.TYPE_PRODUCT)
                                 .build();
                 BarcodeScanner scanner = BarcodeScanning.getClient(options);
-                Task<List<Barcode>> result = scanner.process(image)
+                scanner.process(image)
                         .addOnSuccessListener(barcodes -> {
-                            for (Barcode barcode: barcodes) {
+                            for (Barcode barcode : barcodes) {
 
                                 int valueType = barcode.getValueType();
                                 // See API reference for complete list of supported types
-                                if (valueType == Barcode.TYPE_PRODUCT) {
+                                if (valueType == Barcode.TYPE_PRODUCT && !bd.isAdded()) {
                                     String code = barcode.getDisplayValue();
-                                    Toast.makeText(Scanner.this,
-                                            code,
-                                            Toast.LENGTH_SHORT)
-                                            .show();
+                                    bd.setValues(code);
+                                    bd.show(fragmentManager, "");
                                 }
                             }
                         })

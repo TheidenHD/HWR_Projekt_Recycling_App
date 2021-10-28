@@ -1,13 +1,11 @@
 package com.theidenhd.hwr_projekt_recycling_app;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.google.gson.Gson;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,51 +14,31 @@ public class Fragebogen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Gson gson = new Gson();
+        stor = gson.fromJson(Storage.getJsonFromAssets(this), Storage.class);
+
         setContentView(R.layout.activity_fragebogen);
-        createLayoutDynamically(2);
+        createLayoutDynamically(stor);
     }
 
-    String[][] demo = {{"Becher", "Glas"}, {"Joghurt", "Butter/Magarine", "Milch"}, {"Fertiggerichte", "Snacks", "Molkereiprodukte", "Konserven"}};
-    String[] demo2 = {"Welches Material?","Welcher Produkttyp?","Aus welcher Abteilung stammt es?"};
+    Storage stor;
 
-    private void createLayoutDynamically(int n) {
+    @SuppressLint("SetTextI18n")
+    private void createLayoutDynamically(Storage s) {
         LinearLayout layout = findViewById(R.id.Frage);
         layout.removeAllViews();
-        if (n >= 0) {
-            setTitle(demo2[n]);
-            for (String s : demo[n]) {
-                Button myButton = new Button(this);
-                myButton.setText(s);
+        setTitle(s.getTitel());
+        if (s.getStorage().length > 0)
+            for (Storage st : s.getStorage()) {
+                View temp = st.genView(this, false);
+                layout.addView(temp);
+                temp.setOnClickListener(view ->
+                        createLayoutDynamically(st));
 
-                layout.addView(myButton);
-                if (s.equals("Molkereiprodukte") || s.equals("Joghurt") || s.equals("Becher"))
-                    myButton.setOnClickListener(view ->
-                            createLayoutDynamically(n - 1));
-                else{
-                    myButton.setOnClickListener(view ->
-                    Toast.makeText(Fragebogen.this,
-                    "Error: Daten nicht vorhanden!",
-                    Toast.LENGTH_SHORT)
-                    .show());
-                }
             }
-        } else {
-            setTitle("Trennhinweis:");
-            TextView show = new TextView(this);
-            show.setText("Gelbe Tonne");
-            show.setGravity(Gravity.CENTER);
-            show.setTextAppearance(this, android.R.style.TextAppearance_Material_Display2);
-            layout.addView(show);
+        else
+            layout.addView(s.genView(this, true));
 
-            TextView show2 = new TextView(this);
-            show2.setText("Bitte vorher Becher vom Deckel trennen!");
-            show2.setGravity(Gravity.CENTER);
-            show2.setTextAppearance(this, android.R.style.TextAppearance_Material_Display1);
-            layout.addView(show2);
-
-            ImageView tonne = new ImageView(this);
-            tonne.setImageResource(R.drawable.gelbetonne);
-            layout.addView(tonne);
-        }
     }
 }

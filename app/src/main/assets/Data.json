@@ -1,0 +1,96 @@
+{
+  "text": [
+    "Aus welcher Abteilung stammt es?"
+  ],
+  "bild": "",
+  "storage": [
+    {
+      "text": [
+        "Titel",
+        "Fertiggerichte",
+        "Inhalt:",
+        "Beschreibung"
+      ],
+      "bild": "gelbetonne",
+      "storage": []
+    },
+    {
+      "text": [
+        "Titel",
+        "Snacks",
+        "Inhalt:",
+        "Beschreibung"
+      ],
+      "bild": "blauetonne",
+      "storage": []
+    },
+    {
+      "text": [
+        "Welcher Produkttyp?",
+        "Molkereiprodukte"
+      ],
+      "bild": "",
+      "storage": [
+        {
+          "text": [
+            "Welches Material?",
+            "Joghurt"
+          ],
+          "bild": "",
+          "storage": [
+            {
+              "text": [
+                "Trennhinweis:",
+                "Becher",
+                "Gelbe Tonne",
+                "Bitte vorher Becher vom Deckel trennen!"
+              ],
+              "bild": "gelbetonne",
+              "storage": []
+            },
+            {
+              "text": [
+                "Titel",
+                "Glas",
+                "Inhalt:",
+                "Beschreibung"
+              ],
+              "bild": "blauetonne",
+              "storage": []
+            }
+          ]
+        },
+        {
+          "text": [
+            "Titel",
+            "Butter/Magarine",
+            "Inhalt:",
+            "Beschreibung"
+          ],
+          "bild": "blauetonne",
+          "storage": []
+        },
+        {
+          "text": [
+            "Titel",
+            "Milch",
+            "Inhalt:",
+            "Beschreibung"
+          ],
+          "bild": "blauetonne",
+          "storage": []
+        }
+      ]
+    },
+    {
+      "text": [
+        "Titel",
+        "Konserven",
+        "Inhalt:",
+        "Beschreibung"
+      ],
+      "bild": "gruenetonne",
+      "storage": []
+    }
+  ]
+}
