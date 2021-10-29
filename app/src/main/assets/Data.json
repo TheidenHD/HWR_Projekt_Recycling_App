@@ -11,13 +11,7 @@
       ],
       "bild": "",
       "storage": [
-        {
-          "text": [
-            "Welches Produkt?",
-            "Tütensuppe/soße"
-          ],
-          "bild": "",
-          "storage": [ {
+         {
             "text": [
               "Trennhinweis:",
               "Tütensuppe/soße",
@@ -26,8 +20,8 @@
             ],
             "bild": "gelbetonne",
             "storage": []
-          }]
-        }
+          }
+
       ]
     },
     {
