@@ -1,5 +1,7 @@
 package com.theidenhd.hwr_projekt_recycling_app;
 
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,11 +49,15 @@ public class bottom extends BottomSheetDialogFragment {
 
     public void setValues(String s) {
         //String tmp = getHTML("https://api.barcodelookup.com/v3/products?barcode=4004980517004&formatted=y&key=hbsgiixhog2a1rukwangvpxnwegaj5");
-        String tmp ="{\"products\": [{\"title\": \"Ltje Extra Roast Gesalzen\"}]}";
+        String tmp = "{\"products\": [{\"title\": \"Ltje Extra Roast Gesalzen\"}]}";
         Gson g = new Gson();
-        JsonObject jsonObject = g.fromJson( tmp, JsonObject.class);
-        String a = ((JsonObject)((JsonArray)jsonObject.get("products")).get(0)).get("title").getAsString();
-        this.titelS = a;
+        JsonObject jsonObject = g.fromJson(tmp, JsonObject.class);
+        this.titelS = ((JsonObject) ((JsonArray) jsonObject.get("products")).get(0)).get("title").getAsString();
+        try {
+            hinweis = new InfoAsyncTask().execute(s).get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public static String getHTML(String urlToRead) throws Exception {
@@ -61,5 +72,26 @@ public class bottom extends BottomSheetDialogFragment {
             }
         }
         return result.toString();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public static class InfoAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            String out = "";
+
+
+            try (Connection connection = DriverManager.getConnection("jdbc:mysql://10.0.2.2/hwr_projekt_recycling_app", "user", "demo")) {
+                PreparedStatement statement = connection.prepareStatement("SELECT Hinweis FROM main WHERE Barcode =" + strings[0]);
+                ResultSet results = statement.executeQuery();
+                if (results.next()) {
+                    out = results.getString(1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return out;
+        }
     }
 }
