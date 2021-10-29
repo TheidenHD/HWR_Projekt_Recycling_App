@@ -48,7 +48,7 @@ public class bottom extends BottomSheetDialogFragment {
     }
 
     public void setValues(String s) {
-        //String tmp = getHTML("https://api.barcodelookup.com/v3/products?barcode=4004980517004&formatted=y&key=hbsgiixhog2a1rukwangvpxnwegaj5");
+        //String tmp = getHTML("https://api.barcodelookup.com/v3/products?barcode="+s+"&formatted=y&key=hbsgiixhog2a1rukwangvpxnwegaj5");//Limitierte aufrufe pro Monat nur für Demo Zwecke verwenden.
         String tmp = "{\"products\": [{\"title\": \"Ltje Extra Roast Gesalzen\"}]}";
         Gson g = new Gson();
         JsonObject jsonObject = g.fromJson(tmp, JsonObject.class);
