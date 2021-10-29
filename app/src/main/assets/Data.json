@@ -6,23 +6,89 @@
   "storage": [
     {
       "text": [
-        "Titel",
-        "Fertiggerichte",
-        "Inhalt:",
-        "Beschreibung"
+        "Welches Produkt?",
+        "Fertiggerichte"
       ],
-      "bild": "gelbetonne",
-      "storage": []
+      "bild": "",
+      "storage": [
+        {
+          "text": [
+            "Welches Produkt?",
+            "Tütensuppe/soße"
+          ],
+          "bild": "",
+          "storage": [ {
+            "text": [
+              "Trennhinweis:",
+              "Tütensuppe/soße",
+              "Gelbe Tonne",
+              ""
+            ],
+            "bild": "gelbetonne",
+            "storage": []
+          }]
+        }
+      ]
     },
     {
       "text": [
-        "Titel",
-        "Snacks",
-        "Inhalt:",
-        "Beschreibung"
+        "Welcher Produkttyp?",
+        "Snacks"
       ],
-      "bild": "blauetonne",
-      "storage": []
+      "bild": "",
+      "storage": [ {
+        "text": [
+          "Welcher Produkttyp?",
+          "Süße Snacks"
+        ],
+        "bild": "",
+        "storage": [ {
+          "text": [
+            "Trennhinweis:",
+            "Schokolade",
+            "Gelbe Tonne",
+            "Plastik- und Alufolieverpackungen vorher trennen!\n Gegebenenfalls Pappe in die blaue Tonne."
+          ],
+          "bild": "gelbetonne",
+          "storage": []
+        }, {
+          "text": [
+            "Trennhinweis:",
+            "Fruchtgummitüte",
+            "Gelbe Tonne",
+            ""
+          ],
+          "bild": "gelbetonne",
+          "storage": []
+        }
+        ]
+      },{
+        "text": [
+          "Welcher Produkttyp?",
+          "Salzige Snacks"
+        ],
+        "bild": "",
+        "storage": [ {
+          "text": [
+            "Trennhinweis:",
+            "Tüte",
+            "Gelbe Tonne",
+            ""
+          ],
+          "bild": "gelbetonne",
+          "storage": []
+        }, {
+          "text": [
+            "Trennhinweis:",
+            "Dose (z.B. Pringles)",
+            "Gelbe Tonne",
+            "Besser: Die verschiedenen Materialien voneinander trennen."
+          ],
+          "bild": "gelbetonne",
+          "storage": []
+        }
+        ]
+      }]
     },
     {
       "text": [
@@ -33,7 +99,7 @@
       "storage": [
         {
           "text": [
-            "Welches Material?",
+            "Welcher Produkttyp?",
             "Joghurt"
           ],
           "bild": "",
@@ -50,12 +116,12 @@
             },
             {
               "text": [
-                "Titel",
+                "Trennhinweis:",
                 "Glas",
-                "Inhalt:",
-                "Beschreibung"
+                "Leergut",
+                "Bitte nicht wegschmeißen, sondern zurückbringen."
               ],
-              "bild": "blauetonne",
+              "bild": "pfand",
               "storage": []
             }
           ]
