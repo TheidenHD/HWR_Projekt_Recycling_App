@@ -59,8 +59,12 @@ public class Storage {
 
             Button myButton = new Button(context);
             myButton.setText(text[1]);
-            //Drawable bottom = context.getResources().getDrawable(R.drawable.blauetonne);
-            //myButton.setCompoundDrawablesWithIntrinsicBounds(null, null , null, bottom);
+            Drawable bottom = context.getResources().getDrawable(context.getResources().getIdentifier(
+                                bild,
+                                "drawable",
+                                context.getPackageName()
+                        ));
+            myButton.setCompoundDrawablesWithIntrinsicBounds(null, null , null, bottom);
             return myButton;
         }
     }
