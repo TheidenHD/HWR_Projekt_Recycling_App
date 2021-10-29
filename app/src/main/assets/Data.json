@@ -128,35 +128,86 @@
         },
         {
           "text": [
-            "Titel",
-            "Butter/Magarine",
-            "Inhalt:",
-            "Beschreibung"
+            "Welche Verpackung?",
+            "Butter/Margarine"
           ],
-          "bild": "blauetonne",
-          "storage": []
+          "bild": "",
+          "storage": [ {
+            "text": [
+              "Trennhinweis:",
+              "Becher",
+              "Gelbe Tonne",
+              "Bitte vorher Becher vom Deckel trennen!"
+            ],
+            "bild": "gelbetonne",
+            "storage": []
+          },
+            {
+              "text": [
+                "Trennhinweis:",
+                "Folie",
+                "Gelbe Tonne",
+                "Soweit wie möglich von Essensresten trennen."
+              ],
+              "bild": "gelbetonne",
+              "storage": []
+            }]
         },
         {
           "text": [
-            "Titel",
-            "Milch",
-            "Inhalt:",
-            "Beschreibung"
+            "Welcher Produkttyp?",
+            "Milch"
           ],
-          "bild": "blauetonne",
-          "storage": []
+          "bild": "",
+          "storage": [ {
+            "text": [
+              "Trennhinweis:",
+              "Milchkarton",
+              "Gelbe Tonne",
+              "Deckel von Karton trennen und den Karton platzsparend falten."
+            ],
+            "bild": "gelbetonne",
+            "storage": []
+          },
+            {
+              "text": [
+                "Trennhinweis:",
+                "Glasflasche",
+                "Leergut",
+                "Bitte nicht wegschmeißen, sondern zurückbringen."
+              ],
+              "bild": "pfand",
+              "storage": []
+            }]
         }
       ]
     },
     {
       "text": [
-        "Titel",
-        "Konserven",
-        "Inhalt:",
-        "Beschreibung"
+        "Welcher Produkttyp?",
+        "Konserven"
       ],
-      "bild": "gruenetonne",
-      "storage": []
+      "bild": "",
+      "storage": [ {
+        "text": [
+          "Trennhinweis:",
+          "Einwegglas",
+          "Altglascontainer",
+          "Bitte vorher Glas vom Deckel trennen und Deckel in gelber Tonne entsorgen!"
+        ],
+        "bild": "glasmuell",
+        "storage": []
+      },
+        {
+          "text": [
+            "Trennhinweis:",
+            "Konservendosen",
+            "Gelbe Tonne",
+            "Gegebenenfalls das Etikett von der Dose trennen und in blauer Tonne entsorgen."
+          ],
+          "bild": "gelbetonne",
+          "storage": []
+        }]
     }
   ]
 }
