@@ -2,14 +2,14 @@
   "text": [
     "Aus welcher Abteilung stammt es?"
   ],
-  "bild": "",
+  "bild": [],
   "storage": [
     {
       "text": [
         "Welches Produkt?",
         "Fertiggerichte"
       ],
-      "bild": "",
+      "bild": [],
       "storage": [
          {
             "text": [
@@ -18,7 +18,7 @@
               "Gelbe Tonne",
               ""
             ],
-            "bild": "gelbetonne",
+            "bild": ["","gelbetonne"],
             "storage": []
           }
 
@@ -29,13 +29,13 @@
         "Welcher Produkttyp?",
         "Snacks"
       ],
-      "bild": "",
+      "bild": [],
       "storage": [ {
         "text": [
           "Welcher Produkttyp?",
           "Süße Snacks"
         ],
-        "bild": "",
+        "bild": [],
         "storage": [ {
           "text": [
             "Trennhinweis:",
@@ -43,7 +43,7 @@
             "Gelbe Tonne",
             "Plastik- und Alufolieverpackungen vorher trennen!\n Gegebenenfalls Pappe in die blaue Tonne."
           ],
-          "bild": "gelbetonne",
+          "bild": ["","gelbetonne"],
           "storage": []
         }, {
           "text": [
@@ -52,7 +52,7 @@
             "Gelbe Tonne",
             ""
           ],
-          "bild": "gelbetonne",
+          "bild": ["","gelbetonne"],
           "storage": []
         }
         ]
@@ -61,7 +61,7 @@
           "Welcher Produkttyp?",
           "Salzige Snacks"
         ],
-        "bild": "",
+        "bild": [],
         "storage": [ {
           "text": [
             "Trennhinweis:",
@@ -69,7 +69,7 @@
             "Gelbe Tonne",
             ""
           ],
-          "bild": "gelbetonne",
+          "bild": ["","gelbetonne"],
           "storage": []
         }, {
           "text": [
@@ -78,7 +78,7 @@
             "Gelbe Tonne",
             "Besser: Die verschiedenen Materialien voneinander trennen."
           ],
-          "bild": "gelbetonne",
+          "bild": ["","gelbetonne"],
           "storage": []
         }
         ]
@@ -89,14 +89,14 @@
         "Welcher Produkttyp?",
         "Molkereiprodukte"
       ],
-      "bild": "",
+      "bild": [],
       "storage": [
         {
           "text": [
             "Welcher Produkttyp?",
             "Joghurt"
           ],
-          "bild": "",
+          "bild": [],
           "storage": [
             {
               "text": [
@@ -105,7 +105,7 @@
                 "Gelbe Tonne",
                 "Bitte vorher Becher vom Deckel trennen!"
               ],
-              "bild": "gelbetonne",
+              "bild": ["","gelbetonne"],
               "storage": []
             },
             {
@@ -115,7 +115,7 @@
                 "Leergut",
                 "Bitte nicht wegschmeißen, sondern zurückbringen."
               ],
-              "bild": "pfand",
+              "bild": ["","pfand"],
               "storage": []
             }
           ]
@@ -125,7 +125,7 @@
             "Welche Verpackung?",
             "Butter/Margarine"
           ],
-          "bild": "",
+          "bild": [],
           "storage": [ {
             "text": [
               "Trennhinweis:",
@@ -133,7 +133,7 @@
               "Gelbe Tonne",
               "Bitte vorher Becher vom Deckel trennen!"
             ],
-            "bild": "gelbetonne",
+            "bild": ["","gelbetonne"],
             "storage": []
           },
             {
@@ -143,7 +143,7 @@
                 "Gelbe Tonne",
                 "Soweit wie möglich von Essensresten trennen."
               ],
-              "bild": "gelbetonne",
+              "bild": ["","gelbetonne"],
               "storage": []
             }]
         },
@@ -152,7 +152,7 @@
             "Welcher Produkttyp?",
             "Milch"
           ],
-          "bild": "",
+          "bild": [],
           "storage": [ {
             "text": [
               "Trennhinweis:",
@@ -160,7 +160,7 @@
               "Gelbe Tonne",
               "Deckel von Karton trennen und den Karton platzsparend falten."
             ],
-            "bild": "gelbetonne",
+            "bild": ["","gelbetonne"],
             "storage": []
           },
             {
@@ -170,7 +170,7 @@
                 "Leergut",
                 "Bitte nicht wegschmeißen, sondern zurückbringen."
               ],
-              "bild": "pfand",
+              "bild": ["","pfand"],
               "storage": []
             }]
         }
@@ -181,7 +181,7 @@
         "Welcher Produkttyp?",
         "Konserven"
       ],
-      "bild": "",
+      "bild": [],
       "storage": [ {
         "text": [
           "Trennhinweis:",
@@ -189,7 +189,7 @@
           "Altglascontainer",
           "Bitte vorher Glas vom Deckel trennen und Deckel in gelber Tonne entsorgen!"
         ],
-        "bild": "glasmuell",
+        "bild": ["","glasmuell"],
         "storage": []
       },
         {
@@ -199,7 +199,7 @@
             "Gelbe Tonne",
             "Gegebenenfalls das Etikett von der Dose trennen und in blauer Tonne entsorgen."
           ],
-          "bild": "gelbetonne",
+          "bild": ["","gelbetonne"],
           "storage": []
         }]
     }

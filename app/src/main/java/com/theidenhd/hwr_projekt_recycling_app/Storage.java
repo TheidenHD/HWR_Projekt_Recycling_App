@@ -1,10 +1,10 @@
 package com.theidenhd.hwr_projekt_recycling_app;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,10 +18,10 @@ public class Storage {
 
 
     private final String[] text;
-    private final String bild;
+    private final String[] bild;
     private final Storage[] storage;
 
-    public Storage(String[] te, String bi, Storage[] st) {
+    public Storage(String[] te, String[] bi, Storage[] st) {
         this.text = te;
         this.bild = bi;
         this.storage = st;
@@ -50,7 +50,7 @@ public class Storage {
             try {
                 ImageView tonne = new ImageView(context);
                 tonne.setImageResource(context.getResources().getIdentifier(
-                        bild,
+                        bild[1],
                         "drawable",
                         context.getPackageName()
                 ));
@@ -63,14 +63,15 @@ public class Storage {
 
             Button myButton = new Button(context);
             myButton.setText(text[1]);
+            myButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             try {
                 Drawable bottom = context.getResources().getDrawable(context.getResources().getIdentifier(
-                        bild,
+                        bild[0],
                         "drawable",
                         context.getPackageName()
                 ));
-                myButton.setCompoundDrawablesWithIntrinsicBounds(null, null, null, bottom);
-            } catch (Resources.NotFoundException e) {
+                myButton.setBackground(bottom);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return myButton;
