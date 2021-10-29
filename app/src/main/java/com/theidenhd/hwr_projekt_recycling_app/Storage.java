@@ -1,6 +1,7 @@
 package com.theidenhd.hwr_projekt_recycling_app;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
@@ -46,25 +47,32 @@ public class Storage {
             show2.setTextAppearance(context, android.R.style.TextAppearance_Material_Display1);
             layout.addView(show2);
 
-            ImageView tonne = new ImageView(context);
-            tonne.setImageResource(context.getResources().getIdentifier(
-                    bild,
-                    "drawable",
-                    context.getPackageName()
-            ));
-            layout.addView(tonne);
-
+            try {
+                ImageView tonne = new ImageView(context);
+                tonne.setImageResource(context.getResources().getIdentifier(
+                        bild,
+                        "drawable",
+                        context.getPackageName()
+                ));
+                layout.addView(tonne);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return layout;
         } else {
 
             Button myButton = new Button(context);
             myButton.setText(text[1]);
-            Drawable bottom = context.getResources().getDrawable(context.getResources().getIdentifier(
-                                bild,
-                                "drawable",
-                                context.getPackageName()
-                        ));
-            myButton.setCompoundDrawablesWithIntrinsicBounds(null, null , null, bottom);
+            try {
+                Drawable bottom = context.getResources().getDrawable(context.getResources().getIdentifier(
+                        bild,
+                        "drawable",
+                        context.getPackageName()
+                ));
+                myButton.setCompoundDrawablesWithIntrinsicBounds(null, null, null, bottom);
+            } catch (Resources.NotFoundException e) {
+                e.printStackTrace();
+            }
             return myButton;
         }
     }
