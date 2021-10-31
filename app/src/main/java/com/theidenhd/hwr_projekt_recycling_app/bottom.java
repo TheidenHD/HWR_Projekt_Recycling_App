@@ -1,6 +1,8 @@
 package com.theidenhd.hwr_projekt_recycling_app;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -45,6 +48,17 @@ public class bottom extends BottomSheetDialogFragment {
         inhalt2.setText(hinweis);
         close.setOnClickListener(view1 -> dismiss());
         return view;
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        return new BottomSheetDialog(getContext(), getTheme()){
+            @Override
+            public void onBackPressed() {
+                super.onBackPressed();
+                startActivity(new Intent(getActivity(), MainActivity.class));
+            }
+        };
     }
 
     public void setValues(String s) {
