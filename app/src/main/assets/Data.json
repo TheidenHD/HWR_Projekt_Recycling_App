@@ -21,7 +21,6 @@
             "bild": ["","gelbetonne"],
             "storage": []
           }
-
       ]
     },
     {
@@ -29,13 +28,13 @@
         "Welcher Produkttyp?",
         "Snacks"
       ],
-      "bild": [],
+      "bild": ["snacks"],
       "storage": [ {
         "text": [
           "Welcher Produkttyp?",
           "Süße Snacks"
         ],
-        "bild": [],
+        "bild": ["suessersnack"],
         "storage": [ {
           "text": [
             "Trennhinweis:",
@@ -61,7 +60,7 @@
           "Welcher Produkttyp?",
           "Salzige Snacks"
         ],
-        "bild": [],
+        "bild": ["salzigersnack"],
         "storage": [ {
           "text": [
             "Trennhinweis:",
@@ -89,7 +88,7 @@
         "Welcher Produkttyp?",
         "Molkereiprodukte"
       ],
-      "bild": [],
+      "bild": ["molkereiprodukte"],
       "storage": [
         {
           "text": [
@@ -125,7 +124,7 @@
             "Welche Verpackung?",
             "Butter/Margarine"
           ],
-          "bild": [],
+          "bild": ["butter"],
           "storage": [ {
             "text": [
               "Trennhinweis:",
@@ -133,7 +132,7 @@
               "Gelbe Tonne",
               "Bitte vorher Becher vom Deckel trennen!"
             ],
-            "bild": ["","gelbetonne"],
+            "bild": ["butterbecher","gelbetonne"],
             "storage": []
           },
             {
@@ -143,7 +142,7 @@
                 "Gelbe Tonne",
                 "Soweit wie möglich von Essensresten trennen."
               ],
-              "bild": ["","gelbetonne"],
+              "bild": ["folienbutter","gelbetonne"],
               "storage": []
             }]
         },
@@ -152,7 +151,7 @@
             "Welcher Produkttyp?",
             "Milch"
           ],
-          "bild": [],
+          "bild": ["milch"],
           "storage": [ {
             "text": [
               "Trennhinweis:",
@@ -181,7 +180,7 @@
         "Welcher Produkttyp?",
         "Konserven"
       ],
-      "bild": [],
+      "bild": ["konserven"],
       "storage": [ {
         "text": [
           "Trennhinweis:",
