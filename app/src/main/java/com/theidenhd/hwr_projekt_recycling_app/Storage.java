@@ -1,18 +1,30 @@
 package com.theidenhd.hwr_projekt_recycling_app;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ScaleDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.view.WindowManager;
+import android.view.Display;
+import android.graphics.Point;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.lang.Math;
 
 public class Storage {
 
@@ -32,6 +44,15 @@ public class Storage {
     }
 
     public View genView(Context context, boolean finall) {
+
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+
+        Point size = new Point();
+        display.getSize(size);
+        int width=size.x;
+        int height = size.y;
+
         if (finall) {
             LinearLayout layout = new LinearLayout(context);
             layout.setOrientation(LinearLayout.VERTICAL);
@@ -63,17 +84,24 @@ public class Storage {
 
             Button myButton = new Button(context);
             myButton.setText(text[1]);
-            myButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+       //     myButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             try {
-                Drawable bottom = context.getResources().getDrawable(context.getResources().getIdentifier(
+                @SuppressLint("UseCompatLoadingForDrawables") Drawable bottom = context.getResources().getDrawable(context.getResources().getIdentifier(
                         bild[0],
                         "drawable",
                         context.getPackageName()
                 ));
-                myButton.setBackground(bottom);
+
+                ScaleDrawable backgroundimage = new ScaleDrawable(bottom, Gravity.FILL_HORIZONTAL | Gravity.CENTER_VERTICAL,   -1 , (float)0.4);
+                backgroundimage.setLevel(1);
+
+                myButton.setBackground(backgroundimage);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            myButton.setLayoutParams(new LinearLayout.LayoutParams(width, height/5));
+          //  myButton.setHeight();
             return myButton;
         }
     }
