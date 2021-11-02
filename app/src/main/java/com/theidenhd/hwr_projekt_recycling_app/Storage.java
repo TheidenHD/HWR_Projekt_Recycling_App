@@ -2,15 +2,11 @@ package com.theidenhd.hwr_projekt_recycling_app;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ScaleDrawable;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,13 +14,9 @@ import android.view.WindowManager;
 import android.view.Display;
 import android.graphics.Point;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.lang.Math;
 
 public class Storage {
 
@@ -84,7 +76,6 @@ public class Storage {
 
             Button myButton = new Button(context);
             myButton.setText(text[1]);
-            //myButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             try {
                 @SuppressLint("UseCompatLoadingForDrawables") Drawable bottom = context.getResources().getDrawable(context.getResources().getIdentifier(
                         bild[0],
@@ -101,7 +92,6 @@ public class Storage {
                 e.printStackTrace();
             }
             myButton.setLayoutParams(new LinearLayout.LayoutParams(width, height / 5));
-            //myButton.setHeight();
             return myButton;
         }
     }
