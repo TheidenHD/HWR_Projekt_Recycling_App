@@ -30,4 +30,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Fragebogen.class));
         });
     }
+    @Override
+    public void onBackPressed() {}
 }
