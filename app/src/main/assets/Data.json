@@ -29,7 +29,8 @@
         "Snacks"
       ],
       "bild": ["snacks"],
-      "storage": [ {
+      "storage": [
+        {
         "text": [
           "Welcher Produkttyp?",
           "Süße Snacks"
@@ -181,7 +182,8 @@
         "Konserven"
       ],
       "bild": ["konserven"],
-      "storage": [ {
+      "storage": [
+        {
         "text": [
           "Trennhinweis:",
           "Einwegglas",

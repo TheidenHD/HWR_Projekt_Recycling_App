@@ -50,9 +50,10 @@ public class bottom extends BottomSheetDialogFragment {
         return view;
     }
 
+    @NonNull
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new BottomSheetDialog(getContext(), getTheme()){
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        return new BottomSheetDialog(getContext(), getTheme()) {
             @Override
             public void onBackPressed() {
                 super.onBackPressed();
@@ -95,7 +96,8 @@ public class bottom extends BottomSheetDialogFragment {
             String out = "";
 
 
-            try (Connection connection = DriverManager.getConnection("jdbc:mysql://10.0.2.2/hwr_projekt_recycling_app", "user", "demo")) {
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://10.0.2.2/hwr_projekt_recycling_app", "user", "demo");
                 PreparedStatement statement = connection.prepareStatement("SELECT Hinweis FROM main WHERE Barcode =" + strings[0]);
                 ResultSet results = statement.executeQuery();
                 if (results.next()) {
