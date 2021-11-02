@@ -50,7 +50,7 @@ public class Storage {
 
         Point size = new Point();
         display.getSize(size);
-        int width=size.x;
+        int width = size.x;
         int height = size.y;
 
         if (finall) {
@@ -84,7 +84,7 @@ public class Storage {
 
             Button myButton = new Button(context);
             myButton.setText(text[1]);
-       //     myButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            //myButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             try {
                 @SuppressLint("UseCompatLoadingForDrawables") Drawable bottom = context.getResources().getDrawable(context.getResources().getIdentifier(
                         bild[0],
@@ -92,7 +92,7 @@ public class Storage {
                         context.getPackageName()
                 ));
 
-                ScaleDrawable backgroundimage = new ScaleDrawable(bottom, Gravity.FILL_HORIZONTAL | Gravity.CENTER_VERTICAL,   -1 , (float)0.4);
+                ScaleDrawable backgroundimage = new ScaleDrawable(bottom, Gravity.FILL_HORIZONTAL | Gravity.CENTER_VERTICAL, -1, (float) 0.4);
                 backgroundimage.setLevel(1);
 
                 myButton.setBackground(backgroundimage);
@@ -100,8 +100,8 @@ public class Storage {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            myButton.setLayoutParams(new LinearLayout.LayoutParams(width, height/5));
-          //  myButton.setHeight();
+            myButton.setLayoutParams(new LinearLayout.LayoutParams(width, height / 5));
+            //myButton.setHeight();
             return myButton;
         }
     }

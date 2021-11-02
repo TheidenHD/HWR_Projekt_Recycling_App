@@ -1,6 +1,7 @@
 package com.theidenhd.hwr_projekt_recycling_app;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,10 +26,14 @@ public class Fragebogen extends AppCompatActivity {
         setContentView(R.layout.activity_fragebogen);
 
         ImageButton retu = findViewById(R.id.button_return);
-        retu.setOnClickListener(view ->{
-                if(ret.size()>1){
-                    ret.pop();
-                    createLayoutDynamically(ret.pop());}});
+        retu.setOnClickListener(view -> {
+            if (ret.size() > 1) {
+                ret.pop();
+                createLayoutDynamically(ret.pop());
+            } else {
+                startActivity(new Intent(Fragebogen.this, MainActivity.class));
+            }
+        });
         createLayoutDynamically(stor);
     }
 
@@ -42,7 +47,7 @@ public class Fragebogen extends AppCompatActivity {
         layout.removeAllViews();
         setTitle(s.getTitel());
         ret.push(s);
-        if (s.getStorage().length > 0){
+        if (s.getStorage().length > 0) {
             for (Storage st : s.getStorage()) {
                 View temp = st.genView(this, false);
                 layout.addView(temp);
@@ -50,8 +55,7 @@ public class Fragebogen extends AppCompatActivity {
                         createLayoutDynamically(st));
 
             }
-        }
-        else
+        } else
             layout.addView(s.genView(this, true));
 
     }
