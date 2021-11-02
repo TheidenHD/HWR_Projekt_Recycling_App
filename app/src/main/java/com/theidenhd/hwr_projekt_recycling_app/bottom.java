@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class bottom extends BottomSheetDialogFragment {
         title.setText(titelS);
         inhalt.setText("Trennhinweis:");
         inhalt2.setText(hinweis);
+        inhalt2.setGravity(Gravity.CENTER);
         close.setOnClickListener(view1 -> dismiss());
         return view;
     }
