@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.io.BufferedReader;
@@ -26,7 +25,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,30 +63,41 @@ public class bottom extends BottomSheetDialogFragment {
     }
 
     public void setValues(String s) {
-        //String tmp = getHTML("https://api.barcodelookup.com/v3/products?barcode="+s+"&formatted=y&key=hbsgiixhog2a1rukwangvpxnwegaj5");//Limitierte aufrufe pro Monat nur für Demo Zwecke verwenden.
-        String tmp = "{\"products\": [{\"title\": \"Ltje Extra Roast Gesalzen\"}]}";
-        Gson g = new Gson();
-        JsonObject jsonObject = g.fromJson(tmp, JsonObject.class);
-        this.titelS = ((JsonObject) ((JsonArray) jsonObject.get("products")).get(0)).get("title").getAsString();
         try {
-            hinweis = new InfoAsyncTask().execute(s).get();
-        } catch (ExecutionException | InterruptedException e) {
+            String tmp = new getHTML().execute("https://world.openfoodfacts.org/api/v0/product/" + s + ".json").get();
+            Gson g = new Gson();
+            JsonObject jsonObject = g.fromJson(tmp, JsonObject.class);
+            this.titelS = jsonObject.getAsJsonObject("product").get("product_name").getAsString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            this.hinweis = new InfoAsyncTask().execute(s).get();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static String getHTML(String urlToRead) throws Exception {
-        StringBuilder result = new StringBuilder();
-        URL url = new URL(urlToRead);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(conn.getInputStream()))) {
-            for (String line; (line = reader.readLine()) != null; ) {
-                result.append(line);
+    @SuppressLint("StaticFieldLeak")
+    public static class getHTML extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                StringBuilder result = new StringBuilder();
+                URL url = new URL(strings[0]);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(conn.getInputStream()));
+                for (String line; (line = reader.readLine()) != null; ) {
+                    result.append(line);
+                }
+                return result.toString();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
             }
         }
-        return result.toString();
     }
 
     @SuppressLint("StaticFieldLeak")
