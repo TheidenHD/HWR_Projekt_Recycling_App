@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 29. Okt 2021 um 18:53
+-- Erstellungszeit: 03. Nov 2021 um 10:52
 -- Server-Version: 10.4.16-MariaDB
 -- PHP-Version: 7.4.12
 
@@ -37,7 +37,8 @@ CREATE TABLE `main` (
 --
 
 INSERT INTO `main` (`Barcode`, `Hinweis`) VALUES
-(4004980517004, 'Deckel und Folie von der Dose trennen und alles in die Gelbe Tonne schmeißen.');
+(4004980517004, 'Deckel und Folie von der Dose trennen und alles in die Gelbe Tonne schmeißen.'),
+(5053990138722, 'Die verschiedenen Materialien voneinander trennen und alles in die Gelbe Tonne schmeißen.');
 
 --
 -- Indizes der exportierten Tabellen
