@@ -9,7 +9,7 @@
         "Welches Produkt?",
         "Fertiggerichte"
       ],
-      "bild": [],
+      "bild": ["fertiggerichte"],
       "storage": [
          {
             "text": [
@@ -28,7 +28,7 @@
         "Welcher Produkttyp?",
         "Snacks"
       ],
-      "bild": ["snacks"],
+      "bild": ["snacks2"],
       "storage": [
         {
         "text": [
@@ -43,7 +43,7 @@
             "Gelbe Tonne",
             "Plastik- und Alufolieverpackungen vorher trennen!\n Gegebenenfalls Pappe in die blaue Tonne."
           ],
-          "bild": ["","gelbetonne"],
+          "bild": ["schokolade","gelbetonne"],
           "storage": []
         }, {
           "text": [
@@ -52,7 +52,7 @@
             "Gelbe Tonne",
             ""
           ],
-          "bild": ["","gelbetonne"],
+          "bild": ["fruchtgummi","gelbetonne"],
           "storage": []
         }
         ]
@@ -69,7 +69,7 @@
             "Gelbe Tonne",
             ""
           ],
-          "bild": ["","gelbetonne"],
+          "bild": ["t_tenchips","gelbetonne"],
           "storage": []
         }, {
           "text": [
@@ -78,7 +78,7 @@
             "Gelbe Tonne",
             "Besser: Die verschiedenen Materialien voneinander trennen."
           ],
-          "bild": ["","gelbetonne"],
+          "bild": ["pringles","gelbetonne"],
           "storage": []
         }
         ]
@@ -96,7 +96,7 @@
             "Welcher Produkttyp?",
             "Joghurt"
           ],
-          "bild": [],
+          "bild": ["freshjoghurt"],
           "storage": [
             {
               "text": [
@@ -105,7 +105,7 @@
                 "Gelbe Tonne",
                 "Bitte vorher Becher vom Deckel trennen!"
               ],
-              "bild": ["","gelbetonne"],
+              "bild": ["joghurt","gelbetonne"],
               "storage": []
             },
             {
@@ -115,7 +115,7 @@
                 "Leergut",
                 "Bitte nicht wegschmeißen, sondern zurückbringen."
               ],
-              "bild": ["","pfand"],
+              "bild": ["glasjoghurt","pfand"],
               "storage": []
             }
           ]
@@ -160,7 +160,7 @@
               "Gelbe Tonne",
               "Deckel von Karton trennen und den Karton platzsparend falten."
             ],
-            "bild": ["","gelbetonne"],
+            "bild": ["milchkarton2","gelbetonne"],
             "storage": []
           },
             {
@@ -170,7 +170,7 @@
                 "Leergut",
                 "Bitte nicht wegschmeißen, sondern zurückbringen."
               ],
-              "bild": ["","pfand"],
+              "bild": ["milchflasche_glas","pfand"],
               "storage": []
             }]
         }
@@ -190,7 +190,7 @@
           "Altglascontainer",
           "Bitte vorher Glas vom Deckel trennen und Deckel in gelber Tonne entsorgen!"
         ],
-        "bild": ["","glasmuell"],
+        "bild": ["glaskonserve2","glasmuell"],
         "storage": []
       },
         {
@@ -200,7 +200,7 @@
             "Gelbe Tonne",
             "Gegebenenfalls das Etikett von der Dose trennen und in blauer Tonne entsorgen."
           ],
-          "bild": ["","gelbetonne"],
+          "bild": ["einweg_alu2","gelbetonne"],
           "storage": []
         }]
     }
