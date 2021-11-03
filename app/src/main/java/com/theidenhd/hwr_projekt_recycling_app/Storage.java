@@ -75,6 +75,8 @@ public class Storage {
         } else {
 
             Button myButton = new Button(context);
+            myButton.setTextSize(27);
+          //  myButton.setTextColor(0xFF9400D3);
             myButton.setText(text[1]);
             try {
                 @SuppressLint("UseCompatLoadingForDrawables") Drawable bottom = context.getResources().getDrawable(context.getResources().getIdentifier(
@@ -85,6 +87,7 @@ public class Storage {
 
                 ScaleDrawable backgroundimage = new ScaleDrawable(bottom, Gravity.FILL_HORIZONTAL | Gravity.CENTER_VERTICAL, -1, (float) 0.4);
                 backgroundimage.setLevel(1);
+                backgroundimage.setAlpha(100);
 
                 myButton.setBackground(backgroundimage);
 
@@ -92,6 +95,7 @@ public class Storage {
                 e.printStackTrace();
             }
             myButton.setLayoutParams(new LinearLayout.LayoutParams(width, height / 5));
+
             return myButton;
         }
     }
