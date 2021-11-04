@@ -11,3 +11,7 @@ Die Datenbank(main.sql) liegt im Wurzelverzeichnis des Projektes und muss in ein
 Die Datenbank wurde mit phpMyAdmin Version 5.0.4 und MariaDB Versin 10.4.16 erstelt. Eine Kompatibilität mit anderen Programmen und Versionen kann nicht garantiert werden.
 
 Im Datenbankmanagementsystem muss ein Benutzer mit dem Namen: "user" und dem Passwort: "demo" angelegt werden.
+
+## GitHub
+
+https://github.com/TheidenHD/HWR_Projekt_Recycling_App.git
